@@ -1,14 +1,15 @@
 using System.Collections.Generic;
-using MusicCaCaly.Models.Dtos;
-using MusicCaCaly.Models.InputModels;
-using MusicCaCaly.Repositories.Interfaces;
-using MusicCaCaly.Services.Interfaces;
+using TechnicalRadiation.Models.Dtos;
+using TechnicalRadiation.Models.InputModels;
+using TechnicalRadiation.Repositories.Interfaces;
+using TechnicalRadiation.Services.Interfaces;
+using TechnicalRadiation.Models.Envelopes;
 
-namespace MusicCaCaly.Services.Implementations
+namespace TechnicalRadiation.Services.Implementations
 {
-    public class ArtistService : IArtistService
+    public class NewsItemsService : IArtistService
     {
-        private readonly IArtistRepository _artistRepository;
+        private readonly INewsItemsRepository _newsitemsRepository;
 
         public ArtistService(IArtistRepository artistRepository)
         {
@@ -20,9 +21,11 @@ namespace MusicCaCaly.Services.Implementations
             return _artistRepository.GetAlbumsByArtistId(artistId);
         }
 
-        public IEnumerable<ArtistDto> GetAllArtists()
+        public IEnumerable<NewsItemsDto> GetAllNewsItems(int pageSize, int pageNumber)
         {
-            return _artistRepository.GetAllArtists();
+            IEnumerable<NewsItemsDto> newsitems = _newsitemsRepository.GetAllNewsItems();
+            var Envelope = new Envelope<NewsItemsDto>(pageNumber, pageSize, newsitems);
+            return Envelope;
         }
 
         public ArtistDetailsDto GetArtistById(int id)

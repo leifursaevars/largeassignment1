@@ -2,19 +2,19 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
-using MusicCaCaly.Models.Dtos;
-using MusicCaCaly.Models.InputModels;
-using MusicCaCaly.Repositories.Contexts;
-using MusicCaCaly.Repositories.Entities;
-using MusicCaCaly.Repositories.Interfaces;
+using TechnicalRadiation.Models.Dtos;
+using TechnicalRadiation.Models.InputModels;
+using TechnicalRadiation.Repositories.Contexts;
+using TechnicalRadiation.Repositories.Entities;
+using TechnicalRadiation.Repositories.Interfaces;
 
-namespace MusicCaCaly.Repositories.Implementations
+namespace TechnicalRadiation.Repositories.Implementations
 {
-    public class ArtistRepository : IArtistRepository
+    public class NewsItemsRepository : INewsItemsRepository
     {
-        private readonly MusicDbContext _dbContext;
+        private readonly NewsDbContext _dbContext;
 
-        public ArtistRepository(MusicDbContext dbContext)
+        public Repository(NewsDbContext dbContext)
         {
             _dbContext = dbContext;
         }
@@ -61,20 +61,20 @@ namespace MusicCaCaly.Repositories.Implementations
                 .FirstOrDefault();
         }
 
-        public IEnumerable<ArtistDto> GetAllArtists()
+        public IEnumerable<NewsItemDto> GetAllNewsItems()
         {
-            return _dbContext.Artists.Select(a => new ArtistDto
+            return _dbContext.NewsItems.Select(a => new NewsItemDto
             {
                 Id = a.Id,
-                Name = a.Name,
-                Bio = a.Bio
+                Title = a.Title,
+                ShortDescription = a.ShortDescription
             }).ToList();
         }
 
-        public ArtistDetailsDto GetArtistById(int id)
+        public NewsItemsDetailsDto GetNewsItemById(int id)
         {
             return _dbContext
-                .Artists
+                .NewsItems
                 .Include(a => a.AlbumLink)
                 .ThenInclude(al => al.Album)
                 .Where(a => a.Id == id)

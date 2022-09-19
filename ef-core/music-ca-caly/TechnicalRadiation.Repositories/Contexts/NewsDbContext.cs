@@ -1,11 +1,11 @@
 using Microsoft.EntityFrameworkCore;
-using MusicCaCaly.Repositories.Entities;
+using TechnicalRadiation.Repositories.Entities;
 
-namespace MusicCaCaly.Repositories.Contexts
+namespace TechnicalRadiation.Repositories.Contexts
 {
-    public class MusicDbContext : DbContext
+    public class NewsDbContext : DbContext
     {
-        public MusicDbContext(DbContextOptions<MusicDbContext> options) : base(options) {}
+        public NewsDbContext(DbContextOptions<NewsDbContext> options) : base(options) {}
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -16,7 +16,7 @@ namespace MusicCaCaly.Repositories.Contexts
 
         public DbSet<Album> Albums { get; set; }
         public DbSet<AlbumArtist> AlbumArtists { get; set; }
-        public DbSet<Artist> Artists { get; set; }
+        public DbSet<NewsItem> NewsItems{ get; set; }
         public DbSet<Review> Reviews { get; set; }
         public DbSet<Song> Songs { get; set; }
     }

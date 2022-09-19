@@ -1,13 +1,13 @@
 using System.Collections.Generic;
-using MusicCaCaly.Models.Dtos;
-using MusicCaCaly.Models.InputModels;
+using TechnicalRadiation.Models.Dtos;
+using TechnicalRadiation.Models.InputModels;
 
-namespace MusicCaCaly.Services.Interfaces
+namespace TechnicalRadiation.Services.Interfaces
 {
-    public interface IArtistService
+    public interface INewsItemsService
     {
-        IEnumerable<ArtistDto> GetAllArtists();
-        ArtistDetailsDto GetArtistById(int id);
+        IEnumerable<NewsItemsDto> GetAllNewsItems();
+        NewsItemDetailDto GetNewsItemById(int id);
         IEnumerable<AlbumDto> GetAlbumsByArtistId(int artistId);
         IEnumerable<SongDto> GetSongsByArtistId(int artistId);
         int CreateNewArtist(ArtistInputModel artist);

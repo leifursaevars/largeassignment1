@@ -1,14 +1,14 @@
 using Microsoft.AspNetCore.Mvc;
-using MusicCaCaly.Models.InputModels;
-using MusicCaCaly.Services.Interfaces;
+using TechnicalRadiation.Models.InputModels;
+using TechnicalRadiation.Services.Interfaces;
 
-namespace MusicCaCaly.WebApi.Controllers
+namespace TechnicalRadiation.WebApi.Controllers
 {
     [ApiController]
-    [Route("artists")]
-    public class ArtistController : ControllerBase
+    [Route("api")]
+    public class NewsItemsController : ControllerBase
     {
-        private readonly IArtistService _artistService;
+        private readonly IArtistService _newsitemstService;
         private readonly IReviewService _reviewService;
 
         public ArtistController(IArtistService artistService, IReviewService reviewService)
@@ -19,16 +19,16 @@ namespace MusicCaCaly.WebApi.Controllers
 
         [HttpGet]
         [Route("")]
-        public IActionResult GetAllArtists()
+        public IActionResult GetAllNewsItems()
         {
-            return Ok(_artistService.GetAllArtists());
+            return Ok(_newsitemstService.GetAllArtists());
         }
 
         [HttpGet]
-        [Route("{id}", Name = "GetArtistById")]
-        public IActionResult GetArtistById(int id)
+        [Route("{id}", Name = "GetNewsItemById")]
+        public IActionResult GetNewsItemById(int id)
         {
-            return Ok(_artistService.GetArtistById(id));
+            return Ok(_newsitemstService.GetNewsItemById(id));
         }
 
         [HttpGet]

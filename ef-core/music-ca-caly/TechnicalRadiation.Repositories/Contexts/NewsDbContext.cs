@@ -14,7 +14,7 @@ namespace TechnicalRadiation.Repositories.Contexts
                 .HasKey(x => new { x.AlbumId, x.ArtistId });
         }
 
-        public DbSet<Album> Albums { get; set; }
+        public DbSet<Category> Categories { get; set; }
         public DbSet<AlbumArtist> AlbumArtists { get; set; }
         public DbSet<NewsItem> NewsItems{ get; set; }
         public DbSet<Review> Reviews { get; set; }

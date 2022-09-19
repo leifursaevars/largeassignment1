@@ -1,17 +1,19 @@
 using System;
 using System.Collections.Generic;
 
-namespace MusicCaCaly.Repositories.Entities
+namespace TechnicalRadiation.Repositories.Entities
 {
-    public class Song
+    public class Category
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public TimeSpan Duration { get; set; }
+        public string Slug { get; set; }
+        public string ModifiedBy { get; set; }
         public DateTime CreatedDate { get; set; }
         public DateTime ModifiedDate { get; set; }
 
-        public ICollection<Album> Albums { get; set; }
-        public ICollection<Review> Reviews { get; set; }
+        // Navigation properties
+
+      
     }
 }
